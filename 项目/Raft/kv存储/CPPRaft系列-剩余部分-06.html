@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0046)https://articles.zsxq.com/id_lzghpm8rxaxb.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="https://articles.zsxq.com/favicon.ico">
+    <title>CPPRaft系列-剩余部分-06</title>
+    <link rel="stylesheet" href="./CPPRaft系列-剩余部分-06_files/quill.snow.css">
+    <link rel="stylesheet" href="./CPPRaft系列-剩余部分-06_files/github.css">
+    <style>
+        body {
+            margin: 0px;
+            font-size: 14px;
+            background: #f0f3f8;
+            font-family: "PingFangSC-Regular","Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+        }
+        .top-bar {
+            height: 60px;
+            background: #EBEBEB;
+        }
+        .post {
+            margin: 0 auto;
+            width: 800px;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background-color: white;
+        }
+        .post .title {
+            margin: 0px;
+            font-family: PingFangSC-Medium;
+            font-size: 20px;
+            color: #1A1A1A;
+            line-height: 30px;
+        }
+        .group-info {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #567895;
+        }
+        .group-info a {
+            color: #567895;
+            text-decoration: none;
+        }
+        .author-info {
+            margin-top: 30px;
+            margin-bottom: 24px;
+            height: 24px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .author-info .author {
+            display: flex;
+            align-items: center;
+        }
+        .author-info img {
+            height: 24px;
+            width: 24px;
+            border-radius: 12px;
+        }
+        .author-info .date {
+            color: #B3B3B3;
+        }
+        .author-info .nick-name {
+            color: #4D4D4D;
+            margin-left: 12px;
+        }
+        .content {
+            letter-spacing: 0;
+            color: #2F3034;
+            font-size: 16px;
+            word-wrap: break-word;
+            line-height: 28px;
+            white-space: pre-wrap;
+        }
+        .content div, .content p {
+            line-height: 28px;
+        }
+        .content figure {
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+        .content img {
+            max-width: 100%;
+            object-fit: cover;
+            display: inline-block;
+        }
+        .content a {
+            text-decoration: none;
+            color: #567895;
+        }
+        .content a:hover {
+            text-decoration: underline;
+        }
+        .content p {
+            margin: 0px;
+            white-space: pre-wrap;
+            tab-size: 4;
+        }
+        .content table {
+            display: block;
+            overflow: auto;
+            border: none;
+            border-collapse: collapse;
+            empty-cells: show;
+            max-width: 100%
+        }
+        .content table td {
+            min-width: 5px
+        }
+        .content table td,.content table th {
+            border: 1px solid #ddd
+        }
+        .content table td:empty,.content table th:empty {
+            height: 20px
+        }
+        .content table th {
+            background: #ececec
+        }
+        .content blockquote {
+            color: #9a9a9a;
+            margin: 15px 0 !important;
+            border-left: 3px solid #ccc !important;
+            padding-left: 10px !important;
+        }
+        .content code {
+            white-space: normal;
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .content .article-hr {
+            border-style: solid;
+            border-width: 1px 0 0;
+            border-color: rgba(0, 0, 0, 0.1);
+            transform: scale(1, 0.5);
+            margin: 15px 0;
+        }
+        .content ol {
+            padding-left: 0;
+        }
+        .ql-snow .ql-editor .ql-code-block-container {
+            background-color: rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0f0f0;
+            border-radius: 2px;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        .content .ql-syntax {
+            background-color: #23241f;
+            color: #f8f8f2;
+            overflow: visible;
+            white-space: pre-wrap;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .content pre {
+            white-space: pre-wrap;
+        }
+        .content ol, .content ul {
+            margin: 0;
+        }
+        .ql-align-center {
+            text-align: center;
+        }
+        .ql-align-right {
+            text-align: right;
+        }
+        ul {
+            list-style-type: disc;
+        }
+        footer {
+            margin-top: 48px;
+            margin-bottom: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        footer img {
+            width: 18px;
+            height: 18px;
+            margin-left: 15px;
+        }
+        footer .text {
+            font-size: 15px;
+            color: #16B998;
+            margin: 0 15px 0 6px;
+        }
+        footer .horizon-line {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            width: 50px;
+        }
+        .qrcode-container {
+            position: absolute;
+            left: 820px;
+            top: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px 20px 15px 20px;
+            border: 2px solid rgba(0,0,0,0.05);
+        }
+        .qrcode-container img {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 15px;
+        }
+        .qrcode-container .text-desc {
+            font-size: 12px;
+            color:#B3B3B3;
+        }
+        #qrcode-url {
+            display: none;
+        }
+        .message-container-overlay {
+            position: fixed;
+            left: 50%;
+            top: 50px;
+            width: 400px;
+            margin-left: -200px;
+            margin-top: 10px;
+            z-index: 99;
+        }
+        .message-item {
+            margin-top: 5px;
+            height: 40px;
+            background: rgba(252, 192, 96, .9);
+            box-shadow: 0 2px 8px 0 rgba(227, 169, 33, .2);
+            z-index: 50;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+        }
+        .js-disable-copy {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        li.ql-indent-1:not([data-list]) {
+            counter-increment: list-1;
+            margin-left: 1.2em;
+        }
+        li.ql-indent-2:not([data-list]) {
+            list-style-type: circle;
+            counter-increment: list-2;
+            margin-left: 2.7em;
+        }
+        li.ql-indent-3:not([data-list]) {
+            list-style-type: circle;
+            counter-increment: list-3;
+            margin-left: 4.2em;
+        }
+        li.ql-indent-4:not([data-list]) {
+            list-style-type: circle;
+            counter-increment: list-4;
+            margin-left: 5.7em;
+        }
+        li.ql-indent-5:not([data-list]) {
+            list-style-type: circle;
+            counter-increment: list-5;
+            margin-left: 7.2em;
+        }
+        li.ql-indent-6:not([data-list]) {
+            list-style-type: circle;
+            counter-increment: list-6;
+            margin-left: 8.7em;
+        }
+        li.ql-indent-7:not([data-list]) {
+            list-style-type: circle;
+            counter-increment: list-7;
+            margin-left: 10.2em;
+        }
+        li.ql-indent-8:not([data-list]) {
+            list-style-type: circle;
+            counter-increment: list-8;
+            margin-left: 11.7em;
+        }
+        ol {
+            counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+        }
+        ol li:not([data-list]) {
+            list-style-type: none !important;
+            counter-increment: list-0;
+        }
+        ol li:not([data-list])::before {
+            display: inline-block;
+            content: counter(list-0, decimal) ".";
+            position: relative;
+            left: -10px;
+        }
+        ol li.ql-indent-1:not([data-list])::before {
+            content: counter(list-1, decimal) ".";
+        }
+        ol li.ql-indent-2:not([data-list])::before {
+            content: counter(list-2, decimal) ".";
+        }
+        ol li.ql-indent-3:not([data-list])::before {
+            content: counter(list-3, decimal) ".";
+        }
+        ol li.ql-indent-4:not([data-list])::before {
+            content: counter(list-4, decimal) ".";
+        }
+        ol li.ql-indent-5:not([data-list])::before {
+            content: counter(list-5, decimal) ".";
+        }
+        ol li.ql-indent-6:not([data-list])::before {
+            content: counter(list-6, decimal) ".";
+        }
+        ol li.ql-indent-7:not([data-list])::before {
+            content: counter(list-7, decimal) ".";
+        }
+        ol li.ql-indent-8:not([data-list])::before {
+            content: counter(list-8, decimal) ".";
+        }
+        ol li.ql-indent-9:not([data-list])::before {
+            content: counter(list-9, decimal) ".";
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="post js_watermark quill-editor" style="background-repeat: repeat; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAADeCAYAAADFAGScAAAAAXNSR0IArs4c6QAAIABJREFUeF7tnYuS5DpuBdtev/7/b9deP+LMTq5xcUmV1FXVJUrZERPTD0lFJnkoggTAf/rySwISkIAEJCABCUhAAhKQwA8R+Kcf+hw/RgISkIAEJCABCUhAAhKQwJcGyONOEEb/+/gyr5CABE5IQP2esFEskgR2ElC/O0F5mQROSGBTvxog2y32L19fX//69fX116+vr/85YeNaJAlIYE5A/do7JLAugbx7//L19fWfvn/XbURLfksCsS3y/t3UrwbIdt/4t98Q/+vr6yv//JKABNYhoH7XaStLKoFKIHMTDJC8e/8mHglIYBkC0W/ev//8e+481K8GyNcvN7SRixUA87d8n1UYXbGW6f8W9CYE1O9NGtpqXpLATL+ZuMQA4Z0bI8T37yW7gJVamMBT+r27AZJB7t9/r670HQ4GwFhuGQjz9/9euKNYdAlcjYD6vVqLWp87EYh7Rt6tecf2FdL8Lf/i+pz/83ffv3fqHdb17ASO6Dfz5z+FMdzdAAnAGCAZ2PoOBwNgwGUrKfB0wzq7JCzfnQio3zu1tnW9GoH4iOfdGuOi73BE21lgyLs5Rkr+1w3raj3A+qxKILYDBki0WfXL3/L/pn6vboBQv9nWbQa2DHK4WFULLX/LV8BmoMy/BKPny63gVWVjuVcioH5Xai3LKoE/EtjSL0Gqef/ynuX9y9/yno3RUYNZff/ayyTwMwReod8YINFvdJ5F/j/o9+oGSFZXMojNdi7Y2WCrl+uI/2DbN/ByLf5uMUQ0Qn5GBH7KfQmo3/u2vTVfmwBB5DEqRjsX9e95/9YdjrxvM2nJ7/KPldbck+cZj7l237D05yewV7+ZB7NTic7Rb37GhTIL+n/S75UNkFQ4g9hswMLIiNERYKQLC9B8zwDIVnC6TJ7FLsj5u5AllMC6BNTvum1nye9NgB0M3qGjAPI6Scn3ZMvZev/iKn1vutZeAu8lgPHBwsAj/ea63MMCPnNmjBN2Of+k3ysYIGzvVEg1fd8sgBwjI6sp1RiJkcH5AazA5H+C0s1J/t7O79PvRUD93qu9re21CES/eX9mtZOMkWia3YtRAHmNsewrpiw+1Pdvvd4zua7Vh6zNZwjUWI2qX3Yr0G8PIOc+Fg2qfjMG4DKJftkFiYb/8KwrGCBx00jF6mGB+TkgUvEEmY8CyGuMR5o/11V/1MCrblbdLeszXcZPlcC1CKjfa7WntbkPAVZK8e/GMOD9m/dn9N0DyHuMB+/WPIe4j/7+7W5Z96FsTSXwHgLorsZA53t0+F39YmTU+XNfZPhVo9UNkAqQSPzeVDWAHCDcx85GBsx85e/ucLyns/tUCXQC6tc+IYF1CeAVwA7IKNajBpDz/uW+/v5lodAdjnX7hCVfhwA6TIlHWeZYKGCBoeqX8IYeojBMtztDcnYDhBWW2SFEAMyA1SFRZwLI6zkenB8QoBU8Z4KY7m8dEVnS8xJQv+dtG0smgUcEiI3EPaNfjxtz3r/4gPfkLFxT3bDyOxJM8HvGCs/7eNQq/l0C+wi8Ur/VsEC/0T1uVt/S79kNENwzsisxOoQIX9MMWrl2dlhg/pYv0oDl+9S9D5b4vtXr9jW1V0lAAp2A+rVPSGBNAtW9avZeJf6DuMmR8cBzejbK/v5ltTW0PG9rzT5jqc9DYOReVUtX4z/Q72j34q36PasBQqUp3+wQQNLoYoDMUu6O3LDO01UsiQSuRUD9Xqs9rc29COCvzft35p7BAYF5P+f7WcrdkRvWvYhaWwn8HIFX6nfmhvWS2nzaAKmg6uoJ1lt2ItjC7WdvcA1WG0YGOyV1FSXX6l71ki7jQyTwDwLq184ggXUJoN/UAFeKfM/v8w4l+1Q/e6MHldb3L4HkkMFVWveqdfuKJT8fAbSZknHmRtVvfkeMxpZ+yVwVnWYR4cf0+0kDpA9YpMvt8RejGI5Arml0aYh6oFF32dK96nwCskTrElC/67adJZdAX7AjRWZ/b45iOHj/ck99/2Jk1OfoXmV/k8DrCNRdiZp5buQqiX6rexXuV5lbY6Rwlge7nTURxNv0+ykDhN2LurW7tU07iuEgV3iala1fIHpY4Os6u0+SQCegfu0TEliXwGhHYnQeT2o48gFnQpJ76u4J2SSNoVy3b1jy8xPoKanRY/7vCZtm+uWsPPRLIqf8/GP6/QkDJBXtWzq4RFWLrbpa9S4wiuGogx/B5HlGPs9UuucXkSVcg4D6XaOdLKUERgsFpMusOxIjA6S6Wo3ev/l7deMYvX9ZRDyUitNmk4AEhgQwLMg2xUXoF53VHY1uPIxiOLies/I4QPTHD/t8twHCieIB2HclMrEJSGI1CGgbpcA9EsOBH5t9WgISeI6A+n2On3dL4JME6oniPQNkPcGcScosRuNIDIfv30+2uJ99FQJ1lzGLB4/0S/jBKFvsafX7KgMkz+kpbauPKasn/YAhrsn9HErEFlC/FoNF96qrSMx6nIWA+j1LS1gOCRwn8Ei/LPTtef+SSXLkA57P+TH3jOMYvEMCSxLo+q27FuxO9F1FrsHtEReqpfT7rAGCy1MGONys2NGIccEWD+lye37vGkiOAZNrGeiqUaN71ZLastAnJqB+T9w4Fk0CDwiwgMeuQ3Yw8CDg/Zt36My7oLpcMNHJtfnqvuS6V9kdJfA6ArhBEXtFHHP0W12kZvqtbldolXiPrl+uJWlEX4h4Xa0OPukZA4TJC4Ne/7kWhd2LngqM01CrYULWqx7HAcTslPTdloPV9nIJ3J6A+r19FxDAwgQwCHCb6j9TtVmAKpOVfnbHKGtOnuX7d+HOYtFPRaAaBKTPZTGgu0G+Sr+ZV+dZpNk9BZA9BgiwcJPCemKFpfqczVLdzlLpjrJbMTHq536cApiFkMBiBNTvYg1mcSVQCOzVLxMVVj8rxFEqXQyQfnivhwba/STwOgKZ++ZfvjJ3zj80zc8Y+CR2mHkK9VS6JIjh+mrY9MX+19XohU96ZIDUINR8bECmYqNAl/x9K04jBwH2E80zMMYIIRsWwTJ5fm+EF1bbR0ngFgTU7y2a2UpelABB5Cz65X09yvVfJzCjOI38Lu/ZfqI5LlysulZDZZQM5qKYrZYEXk6ABQGy0KHRWYbWutMxymTV9VtduDBM2EXpOn955V71wC0DpKf6qgbGyLqaDXKUdZRKN3/rfqyzAfZVdfY5ErgDAfV7h1a2jlclUF0yWDUlc1WPz2BxMAbLLJPVbGejvn+ZuMwWGK/K2npJ4NUEvqPfaDHa6/rDOGEDgBAEfp/Pyt9YuD9NjMcjqBggGA91hyK/o1I8ZxafgSHRc4XXz8/zsgtSA+Uelc+/S0ACjwmo38eMvEICZyVQd/7ZeRi9f2fxGbx/yXY1ipE8korzrJwslwTOSGCmX2IuKPNWfNXW4sKeBYYzcnlYJgwQDIvcsBV7MYvPmMV49AKMYj4eFtILJCCBTQLq1w4igXUJ8F6N4bDluz3bxRjFeHQas5iPdalZcgmcg8Ae/W7FZ2wtLFDDS+oXAwSAqeyWC9Qoa1Xumf1+NAjmd2axOodwLMU1CKjfa7SjtbgnAdygSGU/coFiAtKzVs1+PyLJ+9737z37mbV+PYEaizE6g6MbEOq3tAEDErm/+Xl02NBs9aW7ZVVLb+aP+vpu4BMlcF0CrJDMkkCo3+u2vTVbnwD6HQWR48edWub7npWK2nNeQI//6KunvH9xnzaeY/3+Yw0+R6DOZ/P96HgIslfN9FsDzB/pN7qNpnMPKXo/V/s3fzIGBxH2gOpuWPiYjwwKDBBOMudQJIJpXG15cyP6+MsSIItVKkjs1EhP6veyXcCKLUyALFZ1Z6Prlx2MvC+Z7HQ3rLxTZwGq7H76/l24o1j00xFgLsxxE8x9R/ol0xUpd2f6HRkULCBwknldODjVmR3vaCEC3TJQYpmN0vWNzvfIvVh8CS7PF1k0NDre0Vo+824EGJy2/MJrtqvoTv3erZdY37MS6CeNj8pZs+Xk7z2TVd0hqanpef/mHmIrZ5Oks/KxXBI4K4G6kzjKOke5u377QsFe/ebdfbtF++q/ll0PBsBAzRcDWgY4rDdWY7DUMjnCEDlrZ7JcEjgzAYyI0cpJtDfLHZ46YaSo3zO3sGW7MoGZobEnuJR7eY/i6syEJKugTGpYJcUdK+/kTI58/165d1m3dxP4rn6rkYJ+OQuPXc/8X/XLZ+Ve0ubeVr+4VrHVw8CWBs/AlgGOazjNkYExf3On493S8PlXJ1D1NTrkM7uLGaiiURYG+JnVT/V79V5i/c5KgMWDWXwHO5Ij/eJ+1fVLHAhuVUxqwmDLneusjCyXBM5KoOp3FN8R7aHPXBv91RPN+TuLgVzTD9dm/px7b7fTMWv8DID/8fu8D6LzAyeDZj0TBBesywfFnFUllmt5AqNVDoyPasj3BBDRXv4x8OF6wQAXA4W4q7pjqX6X7zJW4EQERvpl8oJ+ewA5BgZ+5BwomGrxLs27tvt9R++4M1cXjrrwcCI0FkUCpyfwav3WkAX0y6K8+t3ZHdhC6sEurLhs+Z7v/Agvk8DtCWBoMKkACJOLDFzVlaoaJBnc2K7lvugz18ftCuOj3qN+b9/lBPBCArND/Hh/RtfVlWpLv2iejHZdv/ydHRW9DF7YkD7qlgRmSRwIGmd3Ek12/QYap4uzqJD/Mz9Wv090qUD0SwISeB8BBqxMUDJRGaW4zqfnuuxmkO1qq0Q99fX7Su+TJXBvAkxeol9iLkZEZkbK6No9sSH3pm7tJfAaAtXFipgL9fsatk8/RQPkaYQ+QAK/jAdWU7qbRFws2MGIK8ZWQDk7FwSUz9CSenPrWTaLBCSwj8BMv3W1k12OuF6wGlqfXncuZosMXE+g+exZ+0rtVRKQAIt3eAoQn8HvOSMruxq55ln9suuZd7D6fbL/aYA8CdDbb0+A3YgMcPnXV0rzMxOWRzscewyL6nf+aKJz+8YRgAQeEEBz6Df6qruQ6BdjZOtw3T2GRc37X9Pq2lASkMBxAlW/GB3ol4UFYq96iuu+gFCzYY0WGXK9+j3eRtM7NEBeCNNH3ZIAOfgxBjIJyb9+mGfgPNrh2IoVYScl12wdSnjLRrDSEvgGAYyKGjyOEdHjH/fscMzcsKobSIrpeR3faCxvkUAj0PXb46tqLMde/Y4O/FS/b+p6GiBvAutjL0eArdcMUHWFpR/8x2A1SuCwZ4djFkA+Cka/HGQrJIE3EaiuExgAI4Nh6/DARzscWwHk6vdNDetjb0Eg+ok22aEkRXU3GGb63eM69Ui/AT3bGblFI7y6khogrybq865GgElK/h/l4O8GAz6nI/cKdjhqitzOywDzq/Ug6/NJArhMkK2m5uDvE46Uk5S5MVJG2qwpNkf1MsD8k63tZ1+NQNcv6avzLla/i7e2BsjiDWjx307g0a4Fg2AmLvmebV+MjL5isidFLpOlt1fOD5DAxQns3bXo+iVldtXv1gppxah+L96prN6PENiza1Gz1NX3r/r9kSZ67kM0QJ7j593rE2DFMwPW6Itdi63g01HsBjEb3RWLHQ4OElyfoDWQwOcIPNLv7AyAbjDUAFV8y3MNB45xPSuyW+PB52j4yRJYhwAGRs1c1UuPfrcOwe4a36NfM1idoJ9ogJygESzCRwgQLE4A6pZvZ4wJrssEJF/18M48i0OMqMyWoZFsWFtuWB8B4odKYCEC6Dc62pqcMBnhupl+c111m5wZGrNEEQuhs6gS+CgBdhLJMLdXv8R91PcvRsxMv93QUL8fbfo/frgGyIkaw6K8nUAd+PAh3XOWRiY7xHbUQmZwy+A5ym7lTsfbm9MPuBmBrt9Uf89KZvQZDdevuvCA+1VNa+1Ox806l9V9OwF2Koin3KPf6uL8Hf3uGR/eXnE/YExAA8SecQcCrIJyGjluFVsB45ULGThibBDjkXvzvExaWFXBIOHz8v8oG9YdmFtHCbyKQPXzrmd0bAWMd/3mGVlBrcGrHEzG83GL5GcmSDWd56vq5HMkcBcCNY0tsRmp+1795j2bd2nVb96/7Hqo30V7kgbIog1nsXcRwDDI/2S1wWjgZNQMZN8xEvLMuFIxaWGXhEC4DJbdf3xXob1IAhL4RYCJS74nRgujgUM/OZH4qJHQU/CyS4J+PWvHTiiB5wh0/UZbGA2v0i/vWFwy8/y4W2LoHB0Xnquxdx8ioAFyCJcXL0Cg59uPkcBgVHcqiPlIfAf+4Ueq1w0Q7kVTDnxHaHqtBP5OoOoXvdZzOziHp55uTGrdIwy7AaJ+j9DzWgmMCURX+RrpsweU4ynwjH5HMR75fN+/C/RQDZAFGskiPiRAIBp+3t1NowaId7crfL2P7oLsSaf7sOBeIAEJ/FoVRYf1rJ2gIT4jEw38wbkmf986OHCGlufU1VibQQIS+B4BXJSjxapfdI3Oun75e93V3FMC9buH0gLXaIAs0EgWcUggfbcGtc1cJljpZKVkZHDULFdbuPE7ZZVnTwC7zScBCfyZQNUvLpL4eNerMTDIlNMNDlZRH+1i1kkLQbAGqNozJfA9AhgPxGewS9l3Hqp+cbuqBof6/R7/S9ylAXKJZrxVJRjQCCjPxKPGdbAqWtPkVjer7taR6/dmrMrnEMy6lbb3Vg1iZSVwgMBIv30FlPScBIxz+jhpOLMrUt029masUr8HGspLJdAIdKODd2zdSWRhof5tpN+aehf9bi0I8FxiPHz/XqB7aoBcoBFvUAVWLzPx4NCi6laFgcEAGSRkpMr3/ZyO6obFZIedEnc1btChrOKPEhjpt7plRI/4jOPGUQ/q3HLDQr91Z8TJyY82rx92cQI1Cx3v35F+c13dXcwiwZYbFgsKLCKSUEL9XrxDUT0NkJs09OLVxMCoafjyOwa4ms4vv2Olk7z+1bio2a8yyalnAOS+TIaq8bI4OosvgY8SqC4W6Bc9Vv2SuQb9MsFhR7Nmu6puHcR9oWWuI2vWRyvvh0tgcQLoN3piVwODJD8T/4ELJO/XPfpF60GUHZG6iKB+F+84e4qvAbKHkteciQArKjXgPINefiaQHDcrtnRHbldkx8pAV08m1wg5U2tblqsRqPqNbjFKqoHRs+XwM25X6JlJEYsRmcRkHNAIuVqvsT5nIdADzkfpsWf6xe2qGjUZA9AvBon6PUtrv7kcGiBvBuzjX0aASUcGNw4ErLEfPZ1uDyzvf2eikgLia55VHLLt8PuXVcAHSeDGBNj1iI7rTkj0lq/qJ94DU+uEhQnPSL813bb6vXFns+ovJ9D1mw+ouxxH9ItLJslceP+q35c327kfqAFy7vaxdP9PoO9idLcqJiSsgubvMSjYFekGSYyX/C7Xa3TY0yTwXgJ9F6NnsyJOK5OQ+n01UGqmKw4eI/sd7zLz/7+3HX36PQn0XY2q3xDBlZl4DpK1jPRbd0HV7z37069aa4DcuPEXrHoNJu8GCKuk+Z+t3hgYuGGNDhzESFkQhUWWwHIEajB5N0CY4KRS7JBw6GCMirrCSsXV73JdwAIvSqAHk6vfRRvyTMXWADlTa1iWRwQwOmJU4Iv6142byHYVg4TdDoPbHlH27xJ4D4EaPE7GHBJF9E/ETSPGR1ZVe+rd95TQp0pAAjMCVb/5Pho9ot+aelfKEnAHxD6wHAFcqdjizaA2mryQWzx/yyDJ9bpoLNfkFvgiBNilJFMOh5dt6TfXsuAwOqjwImishgROT6Dql1iu0YJeD1THxbmezXX6ylrA9xNwB+T9jP2E1xKoWW4yOakGBUYHgepk1SBo/bUl8WkSkMBRArhRosmRfuvkxoWDo4S9XgLvIcCuJG7O9f2LixY7I+i7Jp14T6l86rIENECWbbrbFpxgdGI7+snK9YTk20Ky4hI4KYFZMGt0jHZ1kzxp41ms2xOo+o0Bwvu3Lhp4kODtu8k+ABog+zh51bkIJLaDlRYy4zhpOVcbWRoJjAiwiop+NTrsJxJYhwBuWDFEMDqM7Vin/U5VUg2QUzWHhdlJgMMCE4BuTMdOaF4mgZMQwI2SFNknKZbFkIAEHhCorlbq1+7yFAENkKfwefOHCKTf4hv+oSL4sRKQwDcJqN9vgvM2CZyAQPSbf7panaAxVi6CBsjKrWfZJSABCUhAAhKQgAQksBgBDZDFGsziSkACEpCABCQgAQlIYGUCGiArt55ll4AEJCABCUhAAhKQwGIENEAWazCLKwEJSEACEpCABCQggZUJaICs3HqWXQISkIAEJCABCUhAAosR0ABZrMEsrgQkIAEJSEACEpCABFYmoAGycutZdglIQAISkIAEJCABCSxGQANksQazuBKQgAQkIAEJSEACEliZgAbIyq1n2SUgAQlIQAISkIAEJLAYAQ2QxRrM4kpAAhKQgAQkIAEJSGBlAhogK7eeZZeABCQgAQlIQAISkMBiBDRAFmswiysBCUhAAhKQgAQkIIGVCWiArNx6ll0CEpCABCQgAQlIQAKLEdAAWazBLK4EJCABCUhAAhKQgARWJqABsnLrWXYJSEACEpCABCQgAQksRkADZLEGs7gSkIAEJCABCUhAAhJYmYAGyMqtZ9klIAEJSEACEpCABCSwGAENkMUazOJKQAISkIAEJCABCUhgZQIaICu3nmWXgAQkIAEJSEACEpDAYgQ0QBZrMIsrAQlIQAISkIAEJCCBlQlogKzcepZdAhKQgAQkIAEJSEACixHQAFmswSyuBCQgAQlIQAISkIAEViagAbJy61l2CUhAAhKQgAQkIAEJLEZAA2SxBrO4EpCABCQgAQlIQAISWJmABsjKrWfZJSABCUhAAhKQgAQksBgBDZDFGsziSkACEpCABCQgAQlIYGUCGiArt55ll4AEJCABCUhAAhKQwGIENEAWazCLKwEJSEACEpCABCQggZUJaICs3HqWXQISkIAEJCABCUhAAosR0ABZrMEsrgQkIAEJSEACEpCABFYmoAGycutZdglIQAISkIAEJCABCSxGQANksQazuBKQgAQkIAEJSEACEliZgAbIyq1n2SUgAQlIQAISkIAEJLAYAQ2QxRrM4kpAAhKQgAQkIAEJSGBlAhogK7eeZZeABCQgAQlIQAISkMBiBDRAFmswiysBCUhAAhKQgAQkIIGVCWiArNx6ll0CEpCABCQgAQlIQAKLEdAAWazBLK4EJCABCUhAAhKQgARWJqABsnLrWXYJSEACEpCABCQgAQksRkADZLEGs7gSkIAEJCABCUhAAhJYmYAGyMqtZ9klIAEJSEACEpCABCSwGAENkMUazOJKQAISkIAEJCABCUhgZQIaICu3nmWXgAQkIAEJSEACEpDAYgQ0QBZrMIsrAQlIQAISkIAEJCCBlQlogKzcepZdAhKQgAQkIAEJSEACixHQAFmswSyuBCQgAQlIQAISkIAEViagAbJy652j7OlD/3uOolgKCUjgIAH1exCYl0vgRATU74kaw6IcI6ABcoyXV/+RwF++vr7+9evr6z+/vr7+RzgSkMBSBP7l6+srGv4v9btUu1lYCYQA+s3710VA+8RyBDRAlmuyUxX4334PghkA/3aqklkYCUjgEYHo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&quot;); background-size: 800px 222.339px;">
+        <h1 class="title">CPPRaft系列-剩余部分-06</h1>
+        <div class="group-info">
+            <a href="https://wx.zsxq.com/dweb2/index/group/88511825151142">
+                <span>来自：</span>
+                <span class="group-name">代码随想录</span>
+            </a>
+        </div>
+        <div class="author-info">
+            <div class="author">
+                <img src="./CPPRaft系列-剩余部分-06_files/FgTbimn1Oo952em4DBScoknjuuI7" alt="用户头像">
+                <span class="nick-name">思无邪</span>
+            </div>
+            <span class="date" id="article-date">2024年01月07日 15:07</span>
+        </div>
+        <div class="ql-snow">
+            <div class="content ql-editor"><h1>第六篇-剩余部分</h1><hr class="article-hr" style="height: 0px"><p>good news！！！<img src="./CPPRaft系列-剩余部分-06_files/Fh0EDr4UDv8OTgmvCGrT1IR606Z9"></p><p>代码又又又又更新了，目前已经更新了clerk，可以set和get数据了，而且已经将内部的存储引擎换成了卡哥的跳表实现。</p><p><a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp" target="_blank">https://github.com/youngyangyang04/KVstorageBaseRaft-cpp</a></p><hr class="article-hr" style="height: 0px"><p>首先我们看下第五章的架构图，图中的主要部分我们在前几张讲解完毕了，目前还剩下clerk和k-v数据库，而本篇的重点在于补全版图，完成：clerk、kv、RPC原理的讲解。</p><p><img src="./CPPRaft系列-剩余部分-06_files/Ft_negDcbLW-DMJbvTGxxGliTxCJ"></p><h2>clerk的主要功能及代码</h2><h3>主要功能</h3><p>clerk相当于就是一个外部的客户端了，其作用就是向整个raft集群发起命令并接收响应。</p><h3>代码实现</h3><p>在第五篇的kvServer一节中有过提及，clerk与kvServer需要建立网络链接，那么既然我们实现了一个简单的RPC，那么我们不妨使用RPC来完成这个过程。</p><p>clerk本身的过程还是比较简单的，唯一要注意的：对于RPC返回对端不是leader的话，就需要另外再调用另一个kvServer的RPC重试，直到遇到leader。</p><p>clerk的调用代码在<a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/blob/34962a7d50e1f47c7b853b9e83ffdeb7d61d2da3/example/raftCoreExample/caller.cpp#L7" target="_blank">这里</a></p><div class="ql-code-block-container"><div class="ql-code-block"><span class="ql-token hljs-function">int main()</span>{</div><div class="ql-code-block">    Clerk client;</div><div class="ql-code-block">    client.<span class="ql-token hljs-built_in">Init</span>(<span class="ql-token hljs-string">"test.conf"</span>);</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">auto</span> start = <span class="ql-token hljs-built_in">now</span>();</div><div class="ql-code-block">    <span class="ql-token hljs-type">int</span> count = <span class="ql-token hljs-number">500</span>;</div><div class="ql-code-block">    <span class="ql-token hljs-type">int</span> tmp = count;</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">while</span> (tmp --){</div><div class="ql-code-block">        client.<span class="ql-token hljs-built_in">Put</span>(<span class="ql-token hljs-string">"x"</span>,std::<span class="ql-token hljs-built_in">to_string</span>(tmp));</div><div class="ql-code-block"><br></div><div class="ql-code-block">        std::string get1 = client.<span class="ql-token hljs-built_in">Get</span>(<span class="ql-token hljs-string">"x"</span>);</div><div class="ql-code-block">        std::<span class="ql-token hljs-built_in">printf</span>(<span class="ql-token hljs-string">"get return :{%s}\r\n"</span>,get1.<span class="ql-token hljs-built_in">c_str</span>());</div><div class="ql-code-block">    }</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">return</span> <span class="ql-token hljs-number">0</span>;</div><div class="ql-code-block">}</div></div><p>可以看到这个代码逻辑相当简单，没啥难度，不多说了。</p><p>让我们看看<code>Init</code>函数吧，这个函数的作用是连接所有的raftKvServer节点，方式依然是通过RPC的方式，这个是raft节点之间相互连接的过程是一样的。</p><div class="ql-code-block-container"><div class="ql-code-block"><span class="ql-token hljs-comment">//初始化客户端</span></div><div class="ql-code-block"><span class="ql-token hljs-function">void Clerk::Init(std::string configFileName) </span>{</div><div class="ql-code-block">    <span class="ql-token hljs-comment">//获取所有raft节点ip、port ，并进行连接</span></div><div class="ql-code-block">    MprpcConfig config;</div><div class="ql-code-block">    config.<span class="ql-token hljs-built_in">LoadConfigFile</span>(configFileName.<span class="ql-token hljs-built_in">c_str</span>());</div><div class="ql-code-block">    std::vector&lt;std::pair&lt;std::string,<span class="ql-token hljs-type">short</span>&gt;&gt; ipPortVt;</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">for</span> (<span class="ql-token hljs-type">int</span> i = <span class="ql-token hljs-number">0</span>; i &lt; INT_MAX - <span class="ql-token hljs-number">1</span> ; ++i) {</div><div class="ql-code-block">        std::string node = <span class="ql-token hljs-string">"node"</span> + std::<span class="ql-token hljs-built_in">to_string</span>(i);</div><div class="ql-code-block"><br></div><div class="ql-code-block">        std::string nodeIp = config.<span class="ql-token hljs-built_in">Load</span>(node+<span class="ql-token hljs-string">"ip"</span>);</div><div class="ql-code-block">        std::string nodePortStr = config.<span class="ql-token hljs-built_in">Load</span>(node+<span class="ql-token hljs-string">"port"</span>);</div><div class="ql-code-block">        <span class="ql-token hljs-keyword">if</span>(nodeIp.<span class="ql-token hljs-built_in">empty</span>()){</div><div class="ql-code-block">            <span class="ql-token hljs-keyword">break</span>;</div><div class="ql-code-block">        }</div><div class="ql-code-block">        ipPortVt.<span class="ql-token hljs-built_in">emplace_back</span>(nodeIp, <span class="ql-token hljs-built_in">atoi</span>(nodePortStr.<span class="ql-token hljs-built_in">c_str</span>()));   <span class="ql-token hljs-comment">//沒有atos方法，可以考慮自己实现</span></div><div class="ql-code-block">    }</div><div class="ql-code-block">    <span class="ql-token hljs-comment">//进行连接</span></div><div class="ql-code-block">    <span class="ql-token hljs-keyword">for</span> (<span class="ql-token hljs-type">const</span> <span class="ql-token hljs-keyword">auto</span> &amp;item:ipPortVt){</div><div class="ql-code-block">        std::string ip = item.first; <span class="ql-token hljs-type">short</span> port = item.second;</div><div class="ql-code-block">        <span class="ql-token hljs-comment">//2024-01-04 todo：bug fix</span></div><div class="ql-code-block">        <span class="ql-token hljs-keyword">auto</span>* rpc = <span class="ql-token hljs-keyword">new</span> <span class="ql-token hljs-built_in">raftServerRpcUtil</span>(ip,port);</div><div class="ql-code-block">        m_servers.<span class="ql-token hljs-built_in">push_back</span>(std::<span class="ql-token hljs-built_in">shared_ptr</span>&lt;raftServerRpcUtil&gt;(rpc));</div><div class="ql-code-block">    }</div><div class="ql-code-block">}</div></div><p>接下来让我们看看<code>put</code>函数吧，<code>put</code>函数实际上调用的是<code>PutAppend</code>。</p><div class="ql-code-block-container"><div class="ql-code-block"><span class="ql-token hljs-function">void Clerk::PutAppend(std::string key, std::string value, std::string op) </span>{</div><div class="ql-code-block">    <span class="ql-token hljs-comment">// You will have to modify this function.</span></div><div class="ql-code-block">    m_requestId++;</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">auto</span> requestId = m_requestId;</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">auto</span> server = m_recentLeaderId;</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">while</span> (<span class="ql-token hljs-literal">true</span>){</div><div class="ql-code-block">        raftKVRpcProctoc::PutAppendArgs args;</div><div class="ql-code-block">        args.<span class="ql-token hljs-built_in">set_key</span>(key);args.<span class="ql-token hljs-built_in">set_value</span>(value);args.<span class="ql-token hljs-built_in">set_op</span>(op);args.<span class="ql-token hljs-built_in">set_clientid</span>(m_clientId);args.<span class="ql-token hljs-built_in">set_requestid</span>(requestId);</div><div class="ql-code-block">        raftKVRpcProctoc::PutAppendReply reply;</div><div class="ql-code-block">        <span class="ql-token hljs-type">bool</span> ok = m_servers[server]-&gt;<span class="ql-token hljs-built_in">PutAppend</span>(&amp;args,&amp;reply);</div><div class="ql-code-block">        <span class="ql-token hljs-keyword">if</span>(!ok || reply.<span class="ql-token hljs-built_in">err</span>()==ErrWrongLeader){</div><div class="ql-code-block"><br></div><div class="ql-code-block">            <span class="ql-token hljs-built_in">DPrintf</span>(<span class="ql-token hljs-string">"【Clerk::PutAppend】原以为的leader：{%d}请求失败，向新leader{%d}重试  ，操作：{%s}"</span>,server,server+<span class="ql-token hljs-number">1</span>,op.<span class="ql-token hljs-built_in">c_str</span>());</div><div class="ql-code-block">            <span class="ql-token hljs-keyword">if</span>(!ok){</div><div class="ql-code-block">                <span class="ql-token hljs-built_in">DPrintf</span>(<span class="ql-token hljs-string">"重试原因 ，rpc失敗 ，"</span>);</div><div class="ql-code-block">            }</div><div class="ql-code-block">            <span class="ql-token hljs-keyword">if</span>(reply.<span class="ql-token hljs-built_in">err</span>()==ErrWrongLeader){</div><div class="ql-code-block">                <span class="ql-token hljs-built_in">DPrintf</span>(<span class="ql-token hljs-string">"重試原因：非leader"</span>);</div><div class="ql-code-block">            }</div><div class="ql-code-block">            server = (server+<span class="ql-token hljs-number">1</span>)%m_servers.<span class="ql-token hljs-built_in">size</span>();  <span class="ql-token hljs-comment">// try the next server</span></div><div class="ql-code-block">            <span class="ql-token hljs-keyword">continue</span>;</div><div class="ql-code-block">        }</div><div class="ql-code-block">        <span class="ql-token hljs-keyword">if</span>(reply.<span class="ql-token hljs-built_in">err</span>()==OK){  <span class="ql-token hljs-comment">//什么时候reply errno为ok呢？？？</span></div><div class="ql-code-block">            m_recentLeaderId = server;</div><div class="ql-code-block">            <span class="ql-token hljs-keyword">return</span> ;</div><div class="ql-code-block">        }</div><div class="ql-code-block">    }</div><div class="ql-code-block">}</div></div><p>这里可以注意。</p><p><code>m_requestId++;</code>   m_requestId每次递增。</p><p><code>m_recentLeaderId;</code> m_recentLeaderId是每个clerk初始化的时候随机生成的。</p><p>这两个变量的作用是为了维护上一篇所述的“线性一致性”的概念。</p><p><code>server = (server+1)%m_servers.size();</code>  如果失败的话就让clerk循环节点进行重试。</p><h2>跳表</h2><h3>原理简单讲解</h3><p>网络上讲解跳表的博客实在多如牛毛，前人之述备矣。</p><p>我这里就不献丑了。</p><p>授人以鱼不如授人以渔，本人学习跳表主要参考的资料是：</p><p><a href="https://github.com/youngyangyang04/Skiplist-CPP" target="_blank">卡哥的跳表项目</a></p><p><a href="https://www.xiaolincoding.com/redis/data_struct/data_struct.html#%E8%B7%B3%E8%A1%A8" target="_blank">小林的网站</a></p><h3>如何植入</h3><p>哦吼，我们尝试一下将卡哥的跳表植入我们的项目中吧。</p><p>卡哥的跳表在：<a href="https://github.com/youngyangyang04/Skiplist-CPP" target="_blank">https://github.com/youngyangyang04/Skiplist-CPP</a> ，我们首先把文件添加到我们的项目中。</p><p>项目提示中告诉我们如果要修改key的类型，需要自定义比较函数，同时需要修改load_file。</p><p>我们后面准备使用std::string作为key，所以不用自定义比较函数了诶。</p><p>而load_file文件落盘的一部分，就算不说的话我们这边也打算自己落盘。</p><p>下面开始改造吧。</p><p><br></p><blockquote><div class="blockquote-item">下面只会讲解关键的改造，具体涉及的文件修改大家可以查看github的提交记录。</div><div class="blockquote-item">当然目前还没考虑性能问题，只是做到了“可运行”，也许可以针对我们目前的场景做一些比如锁粒度的优化，欢迎大家issue和pr。仓库地址在本文开头。</div></blockquote><p><img src="./CPPRaft系列-剩余部分-06_files/FooulcOec9xedMnjyKAORB06Y-BM"></p><blockquote><div class="blockquote-item">具体链接在：</div><div class="blockquote-item">https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/commit/e02f388e6d2c2243e447d2a4f74a6abd13ccc226</div></blockquote><p><br></p><p>1.修改dump和load接口</p><p>原来卡哥仓库中的这两个接口的逻辑是直接落盘和从文件中读取数据，我们稍微读读代码。</p><p>原来的关键代码：</p><div class="ql-code-block-container"><div class="ql-code-block"><span class="ql-token hljs-keyword">while</span> (node != <span class="ql-token hljs-literal">NULL</span>) {</div><div class="ql-code-block">    _file_writer &lt;&lt; node-&gt;<span class="ql-token hljs-built_in">get_key</span>() &lt;&lt; <span class="ql-token hljs-string">":"</span> &lt;&lt; node-&gt;<span class="ql-token hljs-built_in">get_value</span>() &lt;&lt; <span class="ql-token hljs-string">"\n"</span>;</div><div class="ql-code-block">    std::cout &lt;&lt; node-&gt;<span class="ql-token hljs-built_in">get_key</span>() &lt;&lt; <span class="ql-token hljs-string">":"</span> &lt;&lt; node-&gt;<span class="ql-token hljs-built_in">get_value</span>() &lt;&lt; <span class="ql-token hljs-string">";\n"</span>;</div><div class="ql-code-block">    node = node-&gt;forward[<span class="ql-token hljs-number">0</span>];</div><div class="ql-code-block">}</div></div><p>其中<code>_file_writer</code>的定义为：<code> std::ofstream _file_writer;</code></p><p>代码逻辑是在不断遍历的过程中是不断的将数据写入到了磁盘，其中使用了<code>:</code>和<code>\n</code>作为分隔符。</p><p>对前面的部分还有映像的小伙伴可能已经反应过来了，这里有数据不安全的问题，即key和value中如果已经存在’:’ <code>\n</code>字符的时候程序可能会发送异常。</p><p>为了数据安全，这里采用的方法依然是使用boost的序列化库。</p><p><code>SkipListDump&lt;K, V&gt;</code>类增加的作用就是为了安全的序列化和反序列化。</p><p>其定义也非常简单,与raft和kvServer中的序列化方式相同，也是boost库序列化的最简单的方式：</p><div class="ql-code-block-container"><div class="ql-code-block"><span class="ql-token hljs-keyword">template</span>&lt;<span class="ql-token hljs-keyword">typename</span> K, <span class="ql-token hljs-keyword">typename</span> V&gt;</div><div class="ql-code-block"><span class="ql-token hljs-keyword">class</span> <span class="ql-token hljs-title">SkipListDump</span> {</div><div class="ql-code-block"><span class="ql-token hljs-keyword">public</span>:</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">friend</span> <span class="ql-token hljs-keyword">class</span>  <span class="ql-token hljs-title">boost</span>::serialization::access;</div><div class="ql-code-block"><br></div><div class="ql-code-block">    <span class="ql-token hljs-function">template&lt;class Archive&gt;</span></div><div class="ql-code-block"><span class="ql-token hljs-function">    void serialize(Archive &amp;ar, const unsigned int version) </span>{</div><div class="ql-code-block">        ar &amp; keyDumpVt_;</div><div class="ql-code-block">        ar &amp; valDumpVt_;</div><div class="ql-code-block">    }</div><div class="ql-code-block">    std::vector&lt;K&gt; keyDumpVt_;</div><div class="ql-code-block">    std::vector&lt;V&gt; valDumpVt_;</div><div class="ql-code-block"><span class="ql-token hljs-keyword">public</span>:</div><div class="ql-code-block">    <span class="ql-token hljs-function">void insert(const Node&lt;K, V&gt; &amp;node)</span>;</div><div class="ql-code-block">};</div></div><p>2.skipList增加<code>void insert_set_element(K&amp;,V&amp;);</code>接口</p><p>增加的原因是因为这样可以和下层的kvServer的语义配合，kvServer中的set方法的语义是：key不存在就增加这个key，如果key存在就将value修改成新值。</p><p>这个作用与insert_element相同类似，insert_set_element是插入元素，如果元素存在则改变其值。</p><p>而insert_element是插入新元素，但是存在相同的key不会进行插入。<a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/blob/d2eef5c6248375a428a14efb627964af087eb69f/src/skipList/include/skipList.h#L198C1-L203C6" target="_blank">关键代码</a>如下：</p><div class="ql-code-block-container"><div class="ql-code-block"><span class="ql-token hljs-comment">// if current node have key equal to searched key, we get it</span></div><div class="ql-code-block"><span class="ql-token hljs-keyword">if</span> (current != <span class="ql-token hljs-literal">NULL</span> &amp;&amp; current-&gt;<span class="ql-token hljs-built_in">get_key</span>() == key) {</div><div class="ql-code-block">    std::cout &lt;&lt; <span class="ql-token hljs-string">"key: "</span> &lt;&lt; key &lt;&lt; <span class="ql-token hljs-string">", exists"</span> &lt;&lt; std::endl;</div><div class="ql-code-block">    _mtx.<span class="ql-token hljs-built_in">unlock</span>();</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">return</span> <span class="ql-token hljs-number">1</span>;</div><div class="ql-code-block">}</div></div><p>同时我们需要注意，在实现insert_set_element元素的时候应该不能找到这个节点，然后直接修改其值。因为后续可能会有类似“排序”这样的拓展功能，因此目前insert_set_element的实现是<u>删除旧节点，然后再插入</u>的方式来实现。</p><h3>更多</h3><p>已知/可能的bug：</p><ol><li data-list="bullet"><span class="ql-ui"></span>dump和load数据库的性能问题，锁安全问题</li><li data-list="bullet"><span class="ql-ui"></span>序列化（kvServer代码中）更优雅的实现:因为kvServer需要调用跳表让其序列化dump，这块没有找到与boost比较好的结合方式。目前方式是增加了一个变量m_serializedKVData，后面可以查看一下是否有更好的方式。</li><li data-list="bullet"><span class="ql-ui"></span>原来代码中数据库快照落盘这里并没有仔细的考量，后面可以考虑做一份。</li><li data-list="bullet"><span class="ql-ui"></span>在装载磁盘的时候应该将数据库重新清空</li><li data-list="bullet"><span class="ql-ui"></span>序列化方式的统一</li></ol><h2>项目中RPC</h2><h3>原理和运行流程简单讲解</h3><p>最开始到现在我们都一直在使用RPC的相关功能，但是作为底层的基础构件，这里对RPC的实现做一些简单的介绍。</p><p>RPC的相关代码在<a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/tree/main/src/rpc" target="_blank">这里</a>。</p><p>本项目使用到的RPC代码高度依赖于protobuf。</p><p>RPC 是一种使得分布式系统中的不同模块之间能够透明地进行远程调用的技术，使得开发者可以更方便地构建分布式系统，而不用过多关注底层通信细节，调用另一台机器的方法会表现的像调用本地的方法一样。</p><p>那么无论对外表现如何，只要设计多个主机之间的通信，必不可少的就是网络通讯这一步</p><p>我们可以看看一次RPC请求到底干了什么？</p><p><img src="./CPPRaft系列-剩余部分-06_files/FuwAuCYet70BQWSI1h9Z8NB5rpCH"></p><p>首先看下【<strong>准备：请求参数、返回参数（这里返回参数的值没有意义）、调用哪个方法</strong>】这一步，这一步需要发起者自己完成，如下：</p><p><img src="./CPPRaft系列-剩余部分-06_files/FgWxlNIWE9RL9sULreFsYm-xkfcN"></p><p>在填充完请求值和返回值之后，就可以实际调用方法了。</p><p>我们点进去看看：</p><div class="ql-code-block-container"><div class="ql-code-block"><span class="ql-token hljs-function">void FiendServiceRpc_Stub::GetFriendsList(::PROTOBUF_NAMESPACE_ID::RpcController* controller,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                              const ::fixbug::GetFriendsListRequest* request,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                              ::fixbug::GetFriendsListResponse* response,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                              ::google::protobuf::Closure* done) </span>{</div><div class="ql-code-block">  channel_-&gt;<span class="ql-token hljs-built_in">CallMethod</span>(<span class="ql-token hljs-built_in">descriptor</span>()-&gt;<span class="ql-token hljs-built_in">method</span>(<span class="ql-token hljs-number">0</span>),</div><div class="ql-code-block">                       controller, request, response, done);</div><div class="ql-code-block">}</div></div><p>可以看到这里相当于是调用了channel_-&gt;CallMethod方法，只是第一个参数变成了descriptor()-&gt;method(0)，其他参数都是我们传进去的参数没有改变，而这个descriptor()-&gt;method(0)存在的目的其实就是为了表示我们到底是调用的哪个方法。</p><p>到这里远端调用的东西就齐活了：方法、请求参数、响应参数。</p><p>还记得在最开始生成stub的我们写的是：<code>fixbug::FiendServiceRpc_Stub stub(new MprpcChannel(ip, port, true));</code>，因此这个channel_本质上是我们自己实现的<code>MprpcChannel</code>类，而channel_-&gt;CallMethod本质上就是调用的<code>MprpcChannel</code>的CallMethod方法。</p><p>我们简单看下这个CallMethod方法干了什么？</p><p>函数的定义在<a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/blob/d2eef5c6248375a428a14efb627964af087eb69f/src/rpc/mprpcchannel.cpp#L17" target="_blank">这里</a>，比较简单：</p><p>按照</p><p><img src="./CPPRaft系列-剩余部分-06_files/FoFDiWj3NaUnCWhG7II-F0Vo_Bcf"></p><p>这样的方式将所需要的参数来序列化，序列化之后再通过<code>send</code>函数循环发送即可。</p><p>可能的改进：在代码中<code>send_rpc_str.insert(0, std::string((char *)&amp;header_size, 4));</code>我们可以看到头部长度固定是4个字节，那么这样的设计是否合理？如果不合理如何改进呢？</p><p>到了这一步，所有的报文已经发送到了对端，即接收RPC的一方，那么此时应该在对端进行：</p><p><img src="./CPPRaft系列-剩余部分-06_files/FqhS_ZcZyK5BHvAah_B8MJGmkaV1"></p><p>这一系列的步骤。</p><p>这一系列步骤的主要函数发生在：<code>RpcProvider::OnMessage</code>。</p><p>我们看下这个函数干了什么？</p><p>首先根据上方序列化的规则进行反序列化，解析出相关的参数。</p><p>然后根据你要调用的方法名去找到实际的方法调用即可。</p><p>相关函数是在<code>NotifyService</code>函数中中提前注册好了，因此这里可以找到然后调用。</p><p>在这个过程中使用了protobuf提供的closure绑定了一个回调函数用于在实际调用完方法之后进行反序列化相关操作。</p><p>为啥这么写就算注册完反序列化的回调了呢？肯定是protobuf为我们提供了相关的功能，在后面代码流程中也会看到相对应的过程。</p><div class="ql-code-block-container"><div class="ql-code-block">google::protobuf::Closure *done = google::protobuf::<span class="ql-token hljs-built_in">NewCallback</span>&lt;RpcProvider, <span class="ql-token hljs-type">const</span> muduo::net::TcpConnectionPtr &amp;, google::protobuf::Message *&gt;(<span class="ql-token hljs-keyword">this</span>, &amp;RpcProvider::SendRpcResponse,conn, response);</div></div><p>真正执行本地方法是在<code>    service-&gt;CallMethod(method, nullptr, request, response, done);</code>，为什么这个方法就可以调用到本地的方法呢？</p><p>这个函数会因为多态实际调用生成的pb.cc文件中的CallMethod方法。</p><div class="ql-code-block-container"><div class="ql-code-block"><span class="ql-token hljs-function">void FiendServiceRpc::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                             ::PROTOBUF_NAMESPACE_ID::RpcController* controller,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                             const ::PROTOBUF_NAMESPACE_ID::Message* request,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                             ::PROTOBUF_NAMESPACE_ID::Message* response,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                             ::google::protobuf::Closure* done)</span></div></div><p>我们看下这个函数干了什么？</p><div class="ql-code-block-container"><div class="ql-code-block">  <span class="ql-token hljs-keyword">switch</span>(method-&gt;<span class="ql-token hljs-built_in">index</span>()) {</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">case</span> <span class="ql-token hljs-number">0</span>:</div><div class="ql-code-block">      <span class="ql-token hljs-built_in">GetFriendsList</span>(controller,</div><div class="ql-code-block">             ::PROTOBUF_NAMESPACE_ID::internal::<span class="ql-token hljs-built_in">DownCast</span>&lt;<span class="ql-token hljs-type">const</span> ::fixbug::GetFriendsListRequest*&gt;(</div><div class="ql-code-block">                 request),</div><div class="ql-code-block">             ::PROTOBUF_NAMESPACE_ID::internal::<span class="ql-token hljs-built_in">DownCast</span>&lt;::fixbug::GetFriendsListResponse*&gt;(</div><div class="ql-code-block">                 response),</div><div class="ql-code-block">             done);</div><div class="ql-code-block">      <span class="ql-token hljs-keyword">break</span>;</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">default</span>:</div><div class="ql-code-block">      <span class="ql-token hljs-built_in">GOOGLE_LOG</span>(FATAL) &lt;&lt; <span class="ql-token hljs-string">"Bad method index; this should never happen."</span>;</div><div class="ql-code-block">      <span class="ql-token hljs-keyword">break</span>;</div><div class="ql-code-block">  }</div></div><p>这个函数和上面讲过的<code>FiendServiceRpc_Stub::GetFriendsList</code>方法有似曾相识的感觉。都是通过xxx-&gt;index来调用实际的方法。</p><p>正常情况下校验会通过，即触发case 0。</p><p>然后会调用我们在FriendService中重写的GetFriendsList方法。</p><div class="ql-code-block-container"><div class="ql-code-block">    <span class="ql-token hljs-comment">// 重写基类方法</span></div><div class="ql-code-block">    <span class="ql-token hljs-function">void GetFriendsList(::google::protobuf::RpcController *controller,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                        const ::fixbug::GetFriendsListRequest *request,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                        ::fixbug::GetFriendsListResponse *response,</span></div><div class="ql-code-block"><span class="ql-token hljs-function">                        ::google::protobuf::Closure *done) </span>{</div><div class="ql-code-block">        <span class="ql-token hljs-type">uint32_t</span> userid = request-&gt;<span class="ql-token hljs-built_in">userid</span>();</div><div class="ql-code-block">        std::vector&lt;std::string&gt; friendsList = <span class="ql-token hljs-built_in">GetFriendsList</span>(userid);</div><div class="ql-code-block">        response-&gt;<span class="ql-token hljs-built_in">mutable_result</span>()-&gt;<span class="ql-token hljs-built_in">set_errcode</span>(<span class="ql-token hljs-number">0</span>);</div><div class="ql-code-block">        response-&gt;<span class="ql-token hljs-built_in">mutable_result</span>()-&gt;<span class="ql-token hljs-built_in">set_errmsg</span>(<span class="ql-token hljs-string">""</span>);</div><div class="ql-code-block">        <span class="ql-token hljs-keyword">for</span> (std::string &amp;name: friendsList) {</div><div class="ql-code-block">            std::string *p = response-&gt;<span class="ql-token hljs-built_in">add_friends</span>();</div><div class="ql-code-block">            *p = name;</div><div class="ql-code-block">        }</div><div class="ql-code-block">        done-&gt;<span class="ql-token hljs-built_in">Run</span>();</div><div class="ql-code-block">    }</div></div><p>这个函数逻辑比较简单：调用本地的方法，填充返回值response。</p><p>然后调用回调函数<code>done-&gt;Run();</code>，还记得我们前面注册了回调函数吗？</p><div class="ql-code-block-container"><div class="ql-code-block">google::protobuf::Closure *done = google::protobuf::<span class="ql-token hljs-built_in">NewCallback</span>&lt;RpcProvider,</div><div class="ql-code-block">                                                                <span class="ql-token hljs-type">const</span> muduo::net::TcpConnectionPtr &amp;,</div><div class="ql-code-block">                                                                google::protobuf::Message *&gt;(<span class="ql-token hljs-keyword">this</span>,</div><div class="ql-code-block">                                                                                             &amp;RpcProvider::SendRpcResponse,</div><div class="ql-code-block">                                                                                             conn, response);</div></div><p>在回调真正执行之前，我们本地方法已经触发了并填充完返回值了。</p><p>此时回看原来的图，我们还需要序列化返回结果和将序列化后的数据发送给对端。</p><p>done-&gt;Run()实际调用的是：RpcProvider::SendRpcResponse。</p><p>这个方法比较简单，不多说了。</p><p>到这里，RPC提供方的流程就结束了。</p><p>从时间节点上来说，此时应该对端来接收返回值了，接收的部分在<a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/blob/d2eef5c6248375a428a14efb627964af087eb69f/src/rpc/mprpcchannel.cpp#L101" target="_blank">这里</a>，还在<code> MprpcChannel::CallMethod</code>部分：</p><div class="ql-code-block-container"><div class="ql-code-block">    <span class="ql-token hljs-comment">/*</span></div><div class="ql-code-block"><span class="ql-token hljs-comment">    从时间节点来说，这里将请求发送过去之后rpc服务的提供者就会开始处理，返回的时候就代表着已经返回响应了</span></div><div class="ql-code-block"><span class="ql-token hljs-comment">    */</span></div><div class="ql-code-block"><br></div><div class="ql-code-block">    <span class="ql-token hljs-comment">// 接收rpc请求的响应值</span></div><div class="ql-code-block">    <span class="ql-token hljs-type">char</span> recv_buf[<span class="ql-token hljs-number">1024</span>] = {<span class="ql-token hljs-number">0</span>};</div><div class="ql-code-block">    <span class="ql-token hljs-type">int</span> recv_size = <span class="ql-token hljs-number">0</span>;</div><div class="ql-code-block">    <span class="ql-token hljs-keyword">if</span> (<span class="ql-token hljs-number">-1</span> == (recv_size = <span class="ql-token hljs-built_in">recv</span>(m_clientFd, recv_buf, <span class="ql-token hljs-number">1024</span>, <span class="ql-token hljs-number">0</span>)))</div><div class="ql-code-block">    {</div><div class="ql-code-block">        <span class="ql-token hljs-built_in">close</span>(m_clientFd); m_clientFd = <span class="ql-token hljs-number">-1</span>;</div><div class="ql-code-block">        <span class="ql-token hljs-type">char</span> errtxt[<span class="ql-token hljs-number">512</span>] = {<span class="ql-token hljs-number">0</span>};</div><div class="ql-code-block">        <span class="ql-token hljs-built_in">sprintf</span>(errtxt, <span class="ql-token hljs-string">"recv error! errno:%d"</span>, errno);</div><div class="ql-code-block">        controller-&gt;<span class="ql-token hljs-built_in">SetFailed</span>(errtxt);</div><div class="ql-code-block">        <span class="ql-token hljs-keyword">return</span>;</div><div class="ql-code-block">    }</div><div class="ql-code-block"><br></div><div class="ql-code-block">    <span class="ql-token hljs-comment">// 反序列化rpc调用的响应数据</span></div><div class="ql-code-block">    <span class="ql-token hljs-comment">// std::string response_str(recv_buf, 0, recv_size); // bug：出现问题，recv_buf中遇到\0后面的数据就存不下来了，导致反序列化失败</span></div><div class="ql-code-block">    <span class="ql-token hljs-comment">// if (!response-&gt;ParseFromString(response_str))</span></div><div class="ql-code-block">    <span class="ql-token hljs-keyword">if</span> (!response-&gt;<span class="ql-token hljs-built_in">ParseFromArray</span>(recv_buf, recv_size))</div><div class="ql-code-block">    {</div><div class="ql-code-block">        <span class="ql-token hljs-type">char</span> errtxt[<span class="ql-token hljs-number">1050</span>] = {<span class="ql-token hljs-number">0</span>};</div><div class="ql-code-block">        <span class="ql-token hljs-built_in">sprintf</span>(errtxt, <span class="ql-token hljs-string">"parse error! response_str:%s"</span>, recv_buf);</div><div class="ql-code-block">        controller-&gt;<span class="ql-token hljs-built_in">SetFailed</span>(errtxt);</div><div class="ql-code-block">        <span class="ql-token hljs-keyword">return</span>;</div><div class="ql-code-block">    }</div></div><p>将接受到的数据按照情况实际序列化成response即可。</p><p>这里就可以看出现在的RPC是不支持异步的，因为在MprpcChannel::CallMethod方法中发送完数据后就会一直等待着去接收。</p><p>protobuf库中充满了多态，因此推荐大家阅读的时候采用debug的方式。</p><p>注：因为目前RPC的网络通信采用的是muduo，muduo支持函数回调，即在对端发送信息来之后就会调用注册好的函数，函数注册代码在：</p><div class="ql-code-block-container"><div class="ql-code-block">    m_muduo_server-&gt;<span class="ql-token hljs-built_in">setMessageCallback</span>(std::<span class="ql-token hljs-built_in">bind</span>(&amp;RpcProvider::OnMessage, <span class="ql-token hljs-keyword">this</span>, std::placeholders::_1,</div><div class="ql-code-block">                                        std::placeholders::_2, std::placeholders::_3));</div></div><p>这里讲解的RPC其实是比较简单的，并没有考虑：服务治理与服务发现、负载均衡，异步调用等功能。</p><p>后续再优化的时候可以考虑这些功能。</p><h2>辅助功能</h2><p>这里稍微提一下在整个项目运行中的一些辅助的小组件的实现思路以及一些优化的思路。</p><p>这些组件实现版本多样，而且与其他模块没有关联，相对也比较简单，但正是如此，这方面可以多学习一下比较优秀的实现，然后稍微测试测试，面试的时候拿出来说一说。</p><p>因为面试的时候面试官很难绝对你的整体设计架构会有多么优秀，更多的是看到你的某个设计细节怎样。</p><h3>LockQueue的实现</h3><p>代码在<a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/blob/d2eef5c6248375a428a14efb627964af087eb69f/src/common/include/util.h#L55" target="_blank">这里</a>。其实就是按照线程池最基本的思路，使用锁和条件变量来控制queue。</p><p>那么一个可能的问题就是由于使用了条件变量和锁，可能在内核和用户态会来回切换，有没有更优秀的尝试呢？</p><p>比如：无锁队列，使用自旋锁优化，其他。。。。</p><p>这里推荐大家可以多试试不同的实现方式，然后测试对比，面试的话很有说法的。</p><h3>Defer函数等辅助函数的实现</h3><p>在代码中经常会看到<a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/blob/d2eef5c6248375a428a14efb627964af087eb69f/src/common/include/util.h#L23" target="_blank">Defer类</a>，这个类的作用其实就是在函数执行完毕后再执行传入Defer类的函数，是收到go中defer的启发。</p><p>主要是RAII的思想，如果面试的时候提到了RAII，那么就可以说到这个Defer，然后就牵扯过来了。</p><h3>怎么使用boost库完成序列化和反序列化的</h3><p>主要参考<a href="https://github.com/youngyangyang04/KVstorageBaseRaft-cpp/blob/34962a7d50e1f47c7b853b9e83ffdeb7d61d2da3/src/raftCore/include/raft.h#L149" target="_blank">BoostPersistRaftNode</a>类的定义和使用。</p><p>在本篇正文部分如何植入跳表的部分讲解过了，这里就不重复了。</p><h2>是否还有可做的工作</h2><p>在代码层面可以做的工作还有很多，主要但不限于包括：</p><ol><li data-list="bullet"><span class="ql-ui"></span>现有实现的更优雅的版本。</li><li data-list="bullet"><span class="ql-ui"></span>可能的性能测试，比如火焰图分析系统的耗时。</li><li data-list="bullet"><span class="ql-ui"></span>一些组件的引入和优化，比如LockQueue更好的实现，日志库，异步RPC等等。最近在星球中不是正好有大佬分享了协程库的实现，在raft中到处都是多线程，那么是否可以引入协程库呢哈哈哈</li></ol><p>这里欢迎大家后续对github仓库上的代码进行优化迭代，任何一个小的改动都是欢迎的。</p><p>对大家的好处是可以学习到github仓库的协作流程，成为contributor，如果；其次正如正文所言，如果对一个点做的比较细的话，面试的话是很有讲头的。</p><hr class="article-hr" style="height: 0px"><p>到这里本系列的文章应该是结束了，没有其他意外的话后续更新主要集中在代码补全与修正上。</p><p>欢迎大家提出issue和pr提出bug和改进思路。毕竟没有反馈很难知道大家希望更新哪部分的功能，或者现在的仓库功能已经足够。</p><p>最后希望输出的内容能对大家有帮助。</p><p><br></p></div>
+        </div>
+        <footer>
+                <div class="horizon-line"></div>
+                <img id="logo" src="./CPPRaft系列-剩余部分-06_files/logo@1x.png">
+                <div class="text">知识星球</div>
+                <div class="horizon-line"></div>
+        </footer>
+        <div class="qrcode-container">
+            <img class="qrcode" id="qrcode" src="data:image/png;base64,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">
+            <div class="text-desc">扫码加入星球</div>
+            <div class="text-desc">查看更多优质内容</div>
+        </div>
+        <div id="qrcode-url">https://wx.zsxq.com/mweb/views/joingroup/join_group.html?group_id=88511825151142</div>
+        <input type="hidden" name="group_allow_copy" value="true">
+        <input type="hidden" name="group_enable_watermark" value="true">
+        <input type="hidden" name="member_id" value="581154221814144">
+        <input type="hidden" name="member_name" value="西瓜">
+        <input type="hidden" name="member_role" value="other">
+    </div>
+    <div class="message-container-overlay">
+    </div>
+    <script src="./CPPRaft系列-剩余部分-06_files/jr-qrcode.js.下载"></script>
+    <script src="./CPPRaft系列-剩余部分-06_files/content-protection.js.下载"></script>
+    <script src="./CPPRaft系列-剩余部分-06_files/article_dweb.js.下载"></script><style>.content img.fr-dib {margin:5px auto;display:block;float:none}.content img.fr-dib.fr-fil {margin-left:0;text-align:left}.content img.fr-dib.fr-fir {margin-right:0;text-algin:right}</style>
+
+
+</body></html>
